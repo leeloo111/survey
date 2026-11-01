@@ -2,53 +2,43 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Survey test</title>
-<style>
-  body { font-family: system-ui, sans-serif; max-width: 520px; margin: 40px auto; padding: 0 16px; }
-  fieldset { border: 1px solid #ccc; border-radius: 8px; margin-bottom: 16px; }
-  button { padding: 10px 20px; font-size: 16px; }
-  #status { margin-top: 16px; font-weight: bold; }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Body &amp; Ornament — a survey</title>
+<meta name="description" content="A survey on jewellery, body adornment and identity, for Coline Gros's Master collection at HEAD – Genève.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="hero.css">
 </head>
 <body>
-<h1>Pipeline test</h1>
-<form id="survey">
-  <fieldset>
-    <legend>1. Favourite colour?</legend>
-    <label><input type="radio" name="colour" value="Red" required> Red</label><br>
-    <label><input type="radio" name="colour" value="Blue"> Blue</label><br>
-    <label><input type="radio" name="colour" value="Green"> Green</label>
-  </fieldset>
-  <fieldset>
-    <legend>2. Which do you like? (several allowed)</legend>
-    <label><input type="checkbox" name="likes" value="Cats"> Cats</label><br>
-    <label><input type="checkbox" name="likes" value="Dogs"> Dogs</label><br>
-    <label><input type="checkbox" name="likes" value="Birds"> Birds</label>
-  </fieldset>
-  <fieldset>
-    <legend>3. Any comment?</legend>
-    <textarea name="comment" rows="3" style="width:100%"></textarea>
-  </fieldset>
-  <button type="submit">Send</button>
-  <div id="status"></div>
-</form>
-<script>
-  // Apps Script web app URL goes here
-  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwqAv085VX73bidNe09nWe6USNeDExP3v2KFJWGx5DD_hma0EoxrXSyWI_kArfjxvc/exec';
-  const form = document.getElementById('survey');
-  const status = document.getElementById('status');
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    status.textContent = 'Sending…';
-    try {
-      await fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) });
-      status.textContent = 'Thanks! Response sent.';
-      form.reset();
-    } catch (err) {
-      status.textContent = 'Something went wrong: ' + err;
-    }
-  });
-</script>
+  <svg class="ornament ornament-tl" viewBox="0 0 220 320" aria-hidden="true">
+    <defs>
+      <linearGradient id="chromeStroke" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ffffff"/>
+        <stop offset=".3" stop-color="#8e939a"/>
+        <stop offset=".5" stop-color="#f4f4f5"/>
+        <stop offset=".75" stop-color="#5f646b"/>
+        <stop offset="1" stop-color="#d9dadd"/>
+      </linearGradient>
+    </defs>
+    <path d="M20 10 C 90 40, 120 120, 70 190 S 40 290, 150 310" />
+    <path d="M60 0 C 150 60, 170 150, 120 210 S 110 270, 200 250" />
+    <path d="M0 80 C 40 110, 70 160, 30 230" />
+  </svg>
+  <svg class="ornament ornament-br" viewBox="0 0 220 320" aria-hidden="true">
+    <path d="M20 10 C 90 40, 120 120, 70 190 S 40 290, 150 310" />
+    <path d="M60 0 C 150 60, 170 150, 120 210 S 110 270, 200 250" />
+  </svg>
+
+  <header class="topbar" id="topbar" hidden>
+    <button class="back" id="backBtn" type="button" aria-label="Previous question">&larr;</button>
+    <div class="progress" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-label" id="progressLabel"></span>
+  </header>
+
+  <main id="app" aria-live="polite"></main>
+
+  <script src="app.js"></script>
 </body>
 </html>
