@@ -35,7 +35,8 @@ const SCREENS = [
   ]},
   { section: 'About you', fields: [
     { id: 'Location', type: 'choice', label: 'Where do you live?', required: true,
-      options: ['Geneva area', 'Elsewhere in Switzerland', 'Elsewhere in Europe', 'Outside Europe'] },
+      options: ['Geneva area', 'Elsewhere in Switzerland', 'Elsewhere in Europe', 'Outside Europe'],
+      other: ['Elsewhere in Switzerland', 'Elsewhere in Europe', 'Outside Europe'], otherId: 'City', otherPlaceholder: 'Which city?' },
   ]},
   { section: 'About you', fields: [
     { id: 'Contact', type: 'inputs', label: 'Would you like to stay in touch?',
@@ -47,42 +48,42 @@ const SCREENS = [
   ]},
 
   /* ---------- II. PERSONAL LINK ---------- */
-  { type: 'section', num: 'II', title: 'Your adornments', text: 'Your own relationship with jewellery and the things you wear on your body.' },
+  { type: 'section', num: 'II', title: 'Your adornments', text: 'Your own relationship with jewelry and the things you wear on your body.' },
   { section: 'Your adornments', fields: [
     { id: 'Adornments worn', type: 'multi', label: 'What type of adornment do you wear?', hint: 'Select all that apply', required: true,
-      options: ['Jewellery', 'Piercing', 'Tattoo', 'Implant', 'Other'],
+      options: ['Jewelry', 'Piercing', 'Tattoo', 'Implant', 'Other'],
       other: 'Other', otherPlaceholder: 'What else?' },
   ]},
   { section: 'Your adornments', fields: [
-    { id: 'Jewellery usual in family', type: 'choice', layout: 'row', sublabel: 'In your family?', required: true, options: YES_NO,
-      label: 'Is wearing jewellery something usual or normal around you?' },
-    { id: 'Jewellery usual among friends', type: 'choice', layout: 'row', sublabel: 'Among your friends?', required: true, options: YES_NO },
+    { id: 'Jewelry usual in family', type: 'choice', layout: 'row', sublabel: 'In your family?', required: true, options: YES_NO,
+      label: 'Is wearing jewelry something usual or normal around you?' },
+    { id: 'Jewelry usual among friends', type: 'choice', layout: 'row', sublabel: 'Among your friends?', required: true, options: YES_NO },
   ]},
   { section: 'Your adornments', fields: [
     { id: 'Environment influenced', type: 'choice', layout: 'row', required: true, options: YES_NO,
-      label: 'Do you think your cultural, social or family environment has influenced your relationship with jewellery or body adornment?' },
+      label: 'Do you think your cultural, social or family environment has influenced your relationship with jewelry or body adornment?' },
     { id: 'Environment influenced: how', type: 'textarea', label: 'How?', showIf: yes('Environment influenced') },
   ]},
   { section: 'Your adornments', fields: [
-    { id: 'Jewellery part of identity', type: 'choice', layout: 'row', required: true, options: YES_NO,
-      label: 'Would you consider your jewellery as part of your identity?' },
-    { id: 'Jewellery part of identity: why', type: 'textarea', label: 'Why?', showIf: yes('Jewellery part of identity') },
+    { id: 'Jewelry part of identity', type: 'choice', layout: 'row', required: true, options: YES_NO,
+      label: 'Would you consider your jewelry as part of your identity?' },
+    { id: 'Jewelry part of identity: why', type: 'textarea', label: 'Why?', showIf: yes('Jewelry part of identity') },
   ]},
   { section: 'Your adornments', fields: [
     { id: 'Aesthetics vs symbolism', type: 'choice', required: true,
       label: 'Would you say aesthetics is…',
-      hint: '…compared to the emotional or symbolic aspect of the jewellery you wear',
+      hint: '…compared to the emotional or symbolic aspect of the jewelry you wear',
       options: ['More important', 'As important', 'Less important'] },
   ]},
   { section: 'Your adornments', fields: [
-    { id: 'Jewellery represented', type: 'multi', required: true, hint: 'Select all that apply',
-      label: 'Have you ever owned or worn a piece of jewellery that represented…',
+    { id: 'Jewelry represented', type: 'multi', required: true, hint: 'Select all that apply',
+      label: 'Have you ever owned or worn a piece of jewelry that represented…',
       options: ['A particular period of your life', 'A relationship', 'A personal change', 'Something else', 'None of these'],
       exclusive: 'None of these', other: 'Something else', otherPlaceholder: 'What?' },
   ]},
   { section: 'Your adornments', fields: [
-    { id: 'Feelings when wearing jewellery', type: 'textarea',
-      label: 'What feelings or sensations do you associate with wearing jewellery?' },
+    { id: 'Feelings when wearing jewelry', type: 'textarea',
+      label: 'What feelings or sensations do you associate with wearing jewelry?' },
   ]},
 
   /* ---------- III. SUBJECT ---------- */
@@ -93,16 +94,16 @@ const SCREENS = [
     { id: 'Body parts to adorn: what and why', type: 'textarea', label: 'Which ones, and why?', showIf: yes('Body parts to adorn') },
   ]},
   { section: 'Body & ornament', fields: [
-    { id: 'Jewellery changes perception', type: 'choice', layout: 'row', required: true, options: YES_NO,
-      label: 'Do you feel that jewellery changes how other people perceive you?' },
-    { id: 'Jewellery changes perception: example', type: 'textarea', label: 'Can you give an example?', showIf: yes('Jewellery changes perception') },
+    { id: 'Jewelry changes perception', type: 'choice', layout: 'row', required: true, options: YES_NO,
+      label: 'Do you feel that jewelry changes how other people perceive you?' },
+    { id: 'Jewelry changes perception: example', type: 'textarea', label: 'Can you give an example?', showIf: yes('Jewelry changes perception') },
   ]},
   { section: 'Body & ornament', fields: [
-    { id: 'Would wear transforming jewellery', type: 'choice', layout: 'row', required: true, options: YES_NO,
-      label: 'Would you wear jewellery that visibly transforms, distorts or changes the appearance of a part of your body?' },
-    { id: 'Would wear transforming jewellery: why', type: 'textarea', label: 'Why?', showIf: (a) => !!a['Would wear transforming jewellery'] },
+    { id: 'Would wear transforming jewelry', type: 'choice', layout: 'row', required: true, options: YES_NO,
+      label: 'Would you wear jewelry that visibly transforms, distorts or changes the appearance of a part of your body?' },
+    { id: 'Would wear transforming jewelry: why', type: 'textarea', label: 'Why?', showIf: (a) => !!a['Would wear transforming jewelry'] },
   ]},
-  { section: 'Body & ornament', showIf: yes('Would wear transforming jewellery'), fields: [
+  { section: 'Body & ornament', showIf: yes('Would wear transforming jewelry'), fields: [
     { id: 'Limit to transformation', type: 'choice', layout: 'row', required: true, options: YES_NO,
       label: 'Is there a limit to how much you would transform your body through adornment?' },
     { id: 'Limit to transformation: what', type: 'textarea', label: 'What would it be?', showIf: yes('Limit to transformation') },
@@ -116,8 +117,10 @@ const INTRO = {
   eyebrow: 'HEAD – Genève · Master research',
   title: 'Body & Ornament',
   paragraphs: [
-    'Hi, I’m Coline, a jewellery designer. My work explores jewellery and body adornment (piercings, tattoos, implants, every object that lives with the body) and how it shapes the way we see ourselves and are seen by others.',
-    'This survey will help me build the foundation of my Master collection and thesis. There are no right or wrong answers: I’m interested in your own experience, whatever your relationship to adornment is, even if you don’t wear any.',
+    'Hi, I’m Coline, a jewelry designer.',
+    'My work explores the relationship between jewelry/body adornment, the human body and identity.',
+    'This survey will help me build the foundation of my thesis and develop pieces for my Master collection.',
+    'There are no right or wrong answers: I’m interested in your own experience, whatever your relationship to adornment is, even if you don’t wear any.',
   ],
   meta: ['About 8 minutes', 'Anonymous', 'Written answers are optional'],
   button: 'Begin',
@@ -143,6 +146,9 @@ let current = 0;
 let submitting = false;
 
 const visible = (s) => !s.showIf || s.showIf(answers);
+const otherKey = (f) => f.otherId || (f.id + ' (other)');
+const otherList = (f) => [].concat(f.other || []);
+const otherOn = (f) => { const v = answers[f.id]; return otherList(f).some((o) => Array.isArray(v) ? v.includes(o) : v === o); };
 const questionScreens = () => SCREENS.filter((s) => s.fields && visible(s));
 
 function el(tag, attrs = {}, children = []) {
@@ -193,12 +199,13 @@ function renderField(f, screen, nextBtn) {
           }
           box.querySelectorAll('.opt').forEach((btn) => btn.setAttribute('aria-checked', String(isOn(btn.dataset.v))));
           if (otherInput) {
-            otherInput.hidden = !isOn(f.other);
+            otherInput.hidden = !otherOn(f);
+            if (!multi && otherList(f).includes(o)) b.after(otherInput);
             if (!otherInput.hidden) otherInput.focus();
           }
           refresh();
           // single-choice questions on their own screen move on automatically
-          if (!multi && screen.fields.length === 1 && !(f.other && o === f.other)) setTimeout(() => go(1), 320);
+          if (!multi && screen.fields.length === 1 && !otherList(f).includes(o)) setTimeout(() => go(1), 320);
         },
       }, [el('span', { class: 'mark' }), el('span', { text: o })]);
       b.dataset.v = o;
@@ -207,10 +214,11 @@ function renderField(f, screen, nextBtn) {
     wrap.append(box);
     if (f.other) {
       otherInput = el('input', { type: 'text', class: 'other-input', placeholder: f.otherPlaceholder || 'Please specify' });
-      otherInput.value = answers[f.id + ' (other)'] || '';
-      otherInput.hidden = !isOn(f.other);
-      otherInput.addEventListener('input', () => { answers[f.id + ' (other)'] = otherInput.value; });
-      wrap.append(otherInput);
+      otherInput.value = answers[otherKey(f)] || '';
+      otherInput.hidden = !otherOn(f);
+      otherInput.addEventListener('input', () => { answers[otherKey(f)] = otherInput.value; });
+      const anchor = !multi && [...box.children].find((btn) => btn.dataset.v === answers[f.id] && otherList(f).includes(btn.dataset.v));
+      if (anchor) anchor.after(otherInput); else wrap.append(otherInput);
     }
   } else if (f.type === 'textarea') {
     const t = el('textarea', { placeholder: 'Write as much or as little as you like…' });
@@ -259,6 +267,18 @@ function updateProgress() {
   progressLabel.textContent = i >= 0 ? `${i + 1} / ${qs.length}` : '';
 }
 
+/* titles always stay on one line: shrink until they fit */
+function fitTitles(root = document) {
+  root.querySelectorAll('.fit').forEach((t) => {
+    t.style.fontSize = '';
+    const max = t.parentElement.clientWidth - parseFloat(getComputedStyle(t.parentElement).paddingLeft) - parseFloat(getComputedStyle(t.parentElement).paddingRight);
+    let size = parseFloat(getComputedStyle(t).fontSize);
+    while (t.scrollWidth > max && size > 12) { size -= 1; t.style.fontSize = size + 'px'; }
+  });
+}
+window.addEventListener('resize', () => fitTitles());
+if (document.fonts) document.fonts.ready.then(() => fitTitles());
+
 function show(index, dir = 1) {
   const old = app.firstElementChild;
   const render = () => {
@@ -270,6 +290,7 @@ function show(index, dir = 1) {
     const screen = buildScreen(s);
     if (dir < 0) screen.classList.add('back-dir');
     app.append(screen);
+    fitTitles(screen);
     window.scrollTo(0, 0);
     updateProgress();
     const first = screen.querySelector('textarea, input:not([hidden])');
@@ -281,9 +302,9 @@ function show(index, dir = 1) {
 function buildScreen(s) {
   if (s.type === 'intro') {
     return el('section', { class: 'screen intro' }, [
-      el('div', { class: 'hero-img', role: 'img', 'aria-label': 'Chrome mouth jewellery by Coline Gros' }),
+      el('div', { class: 'hero-img', role: 'img', 'aria-label': 'Mouth jewelry by Coline Gros' }),
       el('p', { class: 'eyebrow', text: INTRO.eyebrow }),
-      el('h1', { class: 'title', text: INTRO.title }),
+      el('h1', { class: 'title fit', text: INTRO.title.toUpperCase() }),
       ...INTRO.paragraphs.map((p) => el('p', { class: 'body', text: p })),
       el('div', { class: 'meta' }, INTRO.meta.map((m) => el('span', { text: m }))),
       el('div', { class: 'actions' }, [el('button', { class: 'btn', type: 'button', text: INTRO.button, onclick: () => go(1) })]),
@@ -292,9 +313,9 @@ function buildScreen(s) {
   if (s.type === 'section') {
     return el('section', { class: 'screen section-card' }, [
       el('div', { class: 'numeral', text: s.num }),
-      el('h1', { class: 'title', text: s.title }),
+      el('h1', { class: 'title fit', text: s.title.toUpperCase() }),
       el('p', { text: s.text }),
-      el('button', { class: 'btn chrome', type: 'button', text: 'Continue', onclick: () => go(1) }),
+      el('button', { class: 'btn blush', type: 'button', text: 'Continue', onclick: () => go(1) }),
     ]);
   }
   if (s.type === 'submit') {
@@ -302,7 +323,7 @@ function buildScreen(s) {
     const btn = el('button', { class: 'btn', type: 'button', text: 'Send my answers', onclick: () => submit(btn, err) });
     return el('section', { class: 'screen section-card' }, [
       el('div', { class: 'numeral', text: '✦' }),
-      el('h1', { class: 'title', text: 'All done' }),
+      el('h1', { class: 'title fit', text: 'ALL DONE' }),
       el('p', { text: 'Thank you for taking the time. You can go back to change anything, or send your answers now.' }),
       btn, err,
     ]);
@@ -310,7 +331,7 @@ function buildScreen(s) {
   if (s.type === 'thanks') {
     return el('section', { class: 'screen thanks' }, [
       el('div', { class: 'numeral', text: '✦' }),
-      el('h1', { class: 'title', text: THANKS.title }),
+      el('h1', { class: 'title fit', text: THANKS.title.toUpperCase() }),
       el('p', { text: THANKS.text }),
     ]);
   }
@@ -352,7 +373,7 @@ function allFieldIds() {
     if (f.type === 'inputs') f.inputs.forEach((i) => ids.push([i.id, s, f]));
     else {
       ids.push([f.id, s, f]);
-      if (f.other) ids.push([f.id + ' (other)', s, f]);
+      if (f.other) ids.push([otherKey(f), s, f, true]);
     }
   }));
   return ids;
@@ -363,18 +384,14 @@ async function submit(btn, err) {
   submitting = true;
   btn.disabled = true; btn.textContent = 'Sending…'; err.hidden = true;
   const body = new URLSearchParams();
-  allFieldIds().forEach(([id, s, f]) => {
+  allFieldIds().forEach(([id, s, f, isOther]) => {
     const active = visible(s) && (!f.showIf || f.showIf(answers));
     let v = active ? answers[id] : '';
-    if (id.endsWith(' (other)')) {
-      const parent = answers[f.id];
-      const on = Array.isArray(parent) ? parent.includes(f.other) : parent === f.other;
-      if (!on) v = '';
-    }
+    if (isOther && !otherOn(f)) v = '';
     body.append(id, Array.isArray(v) ? v.join(', ') : (v || '').trim());
   });
   try {
-     body.append('_order', JSON.stringify(allFieldIds().map((x) => x[0])));
+    body.append('_order', JSON.stringify(allFieldIds().map((x) => x[0])));
     await fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body });
     history.length = 0;
     SCREENS.push({ type: 'thanks' });
