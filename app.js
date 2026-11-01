@@ -374,6 +374,7 @@ async function submit(btn, err) {
     body.append(id, Array.isArray(v) ? v.join(', ') : (v || '').trim());
   });
   try {
+     body.append('_order', JSON.stringify(allFieldIds().map((x) => x[0])));
     await fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body });
     history.length = 0;
     SCREENS.push({ type: 'thanks' });
