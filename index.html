@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Survey test</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 520px; margin: 40px auto; padding: 0 16px; }
+  fieldset { border: 1px solid #ccc; border-radius: 8px; margin-bottom: 16px; }
+  button { padding: 10px 20px; font-size: 16px; }
+  #status { margin-top: 16px; font-weight: bold; }
+</style>
+</head>
+<body>
+<h1>Pipeline test</h1>
+<form id="survey">
+  <fieldset>
+    <legend>1. Favourite colour?</legend>
+    <label><input type="radio" name="colour" value="Red" required> Red</label><br>
+    <label><input type="radio" name="colour" value="Blue"> Blue</label><br>
+    <label><input type="radio" name="colour" value="Green"> Green</label>
+  </fieldset>
+  <fieldset>
+    <legend>2. Which do you like? (several allowed)</legend>
+    <label><input type="checkbox" name="likes" value="Cats"> Cats</label><br>
+    <label><input type="checkbox" name="likes" value="Dogs"> Dogs</label><br>
+    <label><input type="checkbox" name="likes" value="Birds"> Birds</label>
+  </fieldset>
+  <fieldset>
+    <legend>3. Any comment?</legend>
+    <textarea name="comment" rows="3" style="width:100%"></textarea>
+  </fieldset>
+  <button type="submit">Send</button>
+  <div id="status"></div>
+</form>
+<script>
+  // Apps Script web app URL goes here
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwqAv085VX73bidNe09nWe6USNeDExP3v2KFJWGx5DD_hma0EoxrXSyWI_kArfjxvc/exec';
+  const form = document.getElementById('survey');
+  const status = document.getElementById('status');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.textContent = 'Sending…';
+    try {
+      await fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) });
+      status.textContent = 'Thanks! Response sent.';
+      form.reset();
+    } catch (err) {
+      status.textContent = 'Something went wrong: ' + err;
+    }
+  });
+</script>
+</body>
+</html>
